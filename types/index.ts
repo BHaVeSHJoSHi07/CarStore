@@ -1,4 +1,5 @@
-import { MouseEventHandler } from "react";
+
+import { Dispatch, MouseEventHandler, SetStateAction } from "react";
 
 export interface CarProps {
   city_mpg: number;
@@ -52,17 +53,38 @@ export interface OptionProps {
   value: string;
 }
 
+// In your CustomFilter component, specify the type of setFilter
 export interface CustomFilterProps {
   title: string;
   options: OptionProps[];
+  setFilter:  Dispatch<SetStateAction<string | number>>;
+  // Function to set the selected filter
 }
 
+// Define the type for setFilter to accept a number
 export interface ShowMoreProps {
   pageNumber: number;
   isNext: boolean;
+  setLimit: (value: number) => void; // Function to set the limit for pagination
 }
 
 export interface SearchManuFacturerProps {
-  manufacturer: string;
-  setManuFacturer: (manufacturer: string) => void;
+  selected: string;
+  setSelected: (manufacturer: string) => void;
 }
+
+export interface SearchBarProps {
+  setManufacturer: (manufacturer: string) => void;
+  setModel: (model: string) => void;
+}
+
+
+export interface OptionProps {
+  title: string;
+  value: string;
+}
+
+export interface SpinnerProps{
+  color: string
+}
+
